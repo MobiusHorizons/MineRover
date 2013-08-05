@@ -14,16 +14,42 @@ public class map {
 	public static int[][] map;
 	public static Dimension size;
 	public static int TileSize = 30;
-	static BufferedImage[] tiles = new BufferedImage[6];
-	Hashtable<Integer, String> tile_files = new Hashtable<>();
-	Graphics2D g;
-	Random generator = new Random();
+	static BufferedImage[] tiles = new BufferedImage[7];
+	private Hashtable<Integer, String> tile_files = new Hashtable<>();
+	private Graphics2D g;
+	private Random generator = new Random();
+	private int[] probabilities = new int[5];
+	private int sum, select;
+	private float rand;
 	public map(Dimension size2){
 		size=size2;
 		map = new int[size.width][size.height];
 		for(int[] row:map){
 			for (int i = 0; i < row.length; i++) {
-				row[i] = 1+generator.nextInt(tiles.length-1);
+				probabilities[0] = 10;
+				probabilities[1] = 10;
+				probabilities[2] = 10;
+				probabilities[3] = 10;
+				probabilities[4] = 10;
+				sum=0;
+				for (int part:probabilities)sum+=part;
+				rand = generator.nextFloat();
+				if(rand > 0.2)select = 0;
+				else {
+					rand*=5;
+					System.out.println(rand);
+					for(int j=0;j<probabilities.length;j++){
+						if(rand<(float)probabilities[j]/sum){
+							select = j+1;
+							break;
+						}
+						else rand -= (float)probabilities[j]/sum;
+					}
+				}
+				System.out.println(select);
+				row[i] = 1+select;
+//				row[i] = 1+generator.nextInt(tiles.length-1);
+				
 			}
 			
 		}
