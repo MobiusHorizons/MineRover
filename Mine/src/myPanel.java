@@ -43,6 +43,8 @@ public class myPanel extends JPanel {
 					repaint();
 					break;
 				}
+//				case KeyEvent.VK_ESCAPE:
+					
 			}
 		});
 	}
