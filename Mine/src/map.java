@@ -19,7 +19,7 @@ public class map {
 		map = new int[size.width][size.height];
 		for(int[] row:map){
 			for (int i = 0; i < row.length; i++) {
-				row[i] = generator.nextInt(tiles.length);
+				row[i] = 1+generator.nextInt(tiles.length-1);
 			}
 		}
 		for (int i = 0; i < tiles.length; i++) {
@@ -31,6 +31,8 @@ public class map {
 	}
 	
 	BufferedImage getTile(int x, int y){
-		return tiles[map[x][y]];
+		if(x>=0 && x< size.width && y>0 && y<size.height){
+			return tiles[map[x][y]];
+		}else return tiles[0];
 	}
 }
