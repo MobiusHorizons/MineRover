@@ -37,7 +37,6 @@ public class map {
 				if(rand > 0.2)select = 0;
 				else {
 					rand*=5;
-					System.out.println(rand);
 					for(int j=0;j<probabilities.length;j++){
 						if(rand<(float)probabilities[j]/sum){
 							select = j+1;
@@ -46,7 +45,6 @@ public class map {
 						else rand -= (float)probabilities[j]/sum;
 					}
 				}
-				System.out.println(select);
 				row[i] = 1+select;
 				
 			}
