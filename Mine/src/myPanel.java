@@ -8,7 +8,6 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-
 public class myPanel extends JPanel {
 	Point viewPos = new Point(1,1);
 	BufferedImage view;
