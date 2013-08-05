@@ -31,11 +31,11 @@ public class myPanel extends JPanel {
 					repaint();
 					break;
 				case KeyEvent.VK_LEFT:
-					viewPos.x -= (viewPos.x > 1)? 1:0;
+					viewPos.x -= (viewPos.x > 0)? 1:0;
 					repaint();
 					break;
 				case KeyEvent.VK_UP:
-					viewPos.y -= (viewPos.y > 1)? 1:0;
+					viewPos.y -= (viewPos.y > 0)? 1:0;
 					repaint();
 					break;
 				case KeyEvent.VK_DOWN:
