@@ -42,8 +42,9 @@ public class myPanel extends JPanel {
 					viewPos.y += (viewPos.y + panelSize.height < map.size.height)? 1:0;
 					repaint();
 					break;
+				case KeyEvent.VK_ESCAPE:
+					System.exit(0);
 				}
-//				case KeyEvent.VK_ESCAPE:
 					
 			}
 		});
