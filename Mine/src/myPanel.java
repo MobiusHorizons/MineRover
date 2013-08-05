@@ -59,7 +59,4 @@ public class myPanel extends JPanel {
 		g.drawImage(view, -map.TileSize, -map.TileSize, null);
 	}
 	
-	
-	
-	
 }
