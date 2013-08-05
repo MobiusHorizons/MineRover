@@ -2,9 +2,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
+import java.io.File;
+import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 
 
 public class map {
@@ -12,11 +15,9 @@ public class map {
 	public static Dimension size;
 	public static int TileSize = 30;
 	static BufferedImage[] tiles = new BufferedImage[6];
-	Hashtable<Integer, String> tile_files;
+	Hashtable<Integer, String> tile_files = new Hashtable<>();
 	Graphics2D g;
 	Random generator = new Random();
-	
-	
 	public map(Dimension size2){
 		size=size2;
 		map = new int[size.width][size.height];
@@ -33,11 +34,20 @@ public class map {
 		tile_files.put(5,"diamond.png");
 		tile_files.put(6,"emerald.png");
 		
-		for (int i = 0; i < tiles.length; i++) {
-			tiles[i]=new BufferedImage(TileSize, TileSize, BufferedImage.TYPE_INT_RGB);
-			g = tiles[i].createGraphics();
-			g.setColor(new Color(TileSize*i,TileSize*i,TileSize*i));
-			g.fillRect(0, 0, TileSize, TileSize);
+		tiles[0] = new BufferedImage(TileSize, TileSize, BufferedImage.TYPE_INT_RGB);
+		g=tiles[0].createGraphics();
+		g.setColor(Color.black);
+		g.fillRect(0, 0, TileSize, TileSize);
+		for (int i = 1; i < tiles.length; i++) {
+			try {
+				tiles[i] = ImageIO.read(new File("tiles/"+tile_files.get(i)));
+			} catch(IOException e){
+				
+			}
+			//tiles[i]=new BufferedImage(TileSize, TileSize, BufferedImage.TYPE_INT_RGB);
+			//g = tiles[i].createGraphics();
+			//g.setColor(new Color(TileSize*i,TileSize*i,TileSize*i));
+			//g.fillRect(0, 0, TileSize, TileSize);
 		}
 	}
 	
