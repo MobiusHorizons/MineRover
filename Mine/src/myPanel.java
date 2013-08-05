@@ -27,7 +27,7 @@ public class myPanel extends JPanel {
 				System.out.println(e.getKeyCode());
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_RIGHT:
-					viewPos.x += (viewPos.x + panelSize.width <= map.size.width)? 1:0;
+					viewPos.x += (viewPos.x + panelSize.width < map.size.width)? 1:0;
 					repaint();
 					break;
 				case KeyEvent.VK_LEFT:
@@ -39,7 +39,7 @@ public class myPanel extends JPanel {
 					repaint();
 					break;
 				case KeyEvent.VK_DOWN:
-					viewPos.y += (viewPos.y + panelSize.height <= map.size.height)? 1:0;
+					viewPos.y += (viewPos.y + panelSize.height < map.size.height)? 1:0;
 					repaint();
 					break;
 				case KeyEvent.VK_ESCAPE:
