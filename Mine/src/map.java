@@ -48,7 +48,6 @@ public class map {
 				}
 				System.out.println(select);
 				row[i] = 1+select;
-//				row[i] = 1+generator.nextInt(tiles.length-1);
 				
 			}
 			
