@@ -70,10 +70,6 @@ public class map {
 			} catch(IOException e){
 				
 			}
-			//tiles[i]=new BufferedImage(TileSize, TileSize, BufferedImage.TYPE_INT_RGB);
-			//g = tiles[i].createGraphics();
-			//g.setColor(new Color(TileSize*i,TileSize*i,TileSize*i));
-			//g.fillRect(0, 0, TileSize, TileSize);
 		}
 	}
 	
