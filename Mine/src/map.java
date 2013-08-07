@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -49,6 +50,7 @@ public class map {
 			}
 			
 		}
+		tile_files.put(0,"tunnel.png");
 		tile_files.put(1, "dirt.png");
 		tile_files.put(2,"iron.png");
 		tile_files.put(3,"gold.png");
@@ -70,8 +72,24 @@ public class map {
 	}
 	
 	static BufferedImage getTile(int x, int y){
-		if(x>=0 && x< size.width && y>=0 && y<size.height){
+		if(isInMap(x,y)){
 			return tiles[map[x][y]];
 		}else return tiles[0];
+	}
+	
+	static int dig(Point pos){
+		if(isInMap(pos)){
+			int type = map[pos.x][pos.y];
+			map[pos.x][pos.y] = 0;
+			return type;
+		}
+		return -1;
+	}
+	
+	static boolean isInMap(int x, int y){
+		return x>=0 && x< size.width && y>=0 && y<size.height;
+	}
+	static boolean isInMap(Point pos){
+		return isInMap(pos.x, pos.y);
 	}
 }
