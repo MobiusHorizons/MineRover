@@ -11,6 +11,7 @@ public class game {
 	public game(){
 		new map(new Dimension(40,40));
 		refresh();
+		map.dig(player.position);
 	}
 	
 	
