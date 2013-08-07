@@ -29,7 +29,7 @@ public class game {
 	public static void main(String[] args){
 		Dimension size = new Dimension(630, 630);
 		new Window(size);
-		Window.panel.requestFocus();
+
 		new game();
 		
 	}

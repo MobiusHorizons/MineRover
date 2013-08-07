@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -26,6 +28,14 @@ public class Window extends JFrame {
 		this.setUndecorated(true);
 		this.setContentPane(panel);
 		this.setVisible(true);
+		
+		this.addWindowFocusListener(new WindowAdapter() {
+			public void windowGainedFocus(WindowEvent e) {
+				panel.requestFocus();
+				panel.requestFocusInWindow();
+			}
+		});
+		
 	}
 	
 	
@@ -34,6 +44,8 @@ public class Window extends JFrame {
 		panel.repaint();
 	}
 	
+	
+	
 	class myPanel extends JPanel implements ActionListener{
 		Point viewPos = new Point(1,1);
 		Point playerPos = new Point(10,10);
@@ -41,7 +53,7 @@ public class Window extends JFrame {
 		Graphics2D g2;
 		Dimension size;
 		ArrayList<Integer> keys = new ArrayList<Integer>();
-		Timer timer = new Timer(500, this);
+		Timer timer = new Timer(100, this);
 		public myPanel(Dimension newPanelSize){
 			this.size = new Dimension(newPanelSize.width/map.TileSize, newPanelSize.height/map.TileSize);
 			view = new BufferedImage((this.size.width+2)*map.TileSize, (this.size.height+2)*map.TileSize, BufferedImage.TYPE_INT_RGB);

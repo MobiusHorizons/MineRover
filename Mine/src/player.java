@@ -28,7 +28,6 @@ public class player {
 			
 			fuel -= fuel_move;
 		}
-		Window.panel.timer.setDelay(100 +(100 * last_tile));
 		
 		game.refresh();
 		System.out.println(fuel);
