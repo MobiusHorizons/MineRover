@@ -51,7 +51,6 @@ public class Window extends JFrame {
 				}
 				public void keyReleased(KeyEvent e) {
 					keys.remove((Object)e.getKeyCode());
-					System.out.println(e.isActionKey());
 				}
 				public void keyPressed(KeyEvent e) {
 					if(!keys.contains(e.getKeyCode()))keys.add(e.getKeyCode());
