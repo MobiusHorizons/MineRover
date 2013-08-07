@@ -21,11 +21,14 @@ public class player {
 		}
 		
 		position.translate(dx, dy);
-		if(map.dig(position)!=0){
+		int last_tile = map.dig(position);
+		if(last_tile!=0){
 			fuel-= fuel_drill;
 		}else {
+			
 			fuel -= fuel_move;
 		}
+		Window.panel.timer.setDelay(100 +(100 * last_tile));
 		
 		game.refresh();
 		System.out.println(fuel);
