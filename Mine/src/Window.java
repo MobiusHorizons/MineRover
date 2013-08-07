@@ -41,7 +41,7 @@ public class Window extends JFrame {
 		Graphics2D g2;
 		Dimension size;
 		ArrayList<Integer> keys = new ArrayList<Integer>();
-		Timer timer = new Timer(100, this);
+		Timer timer = new Timer(500, this);
 		public myPanel(Dimension newPanelSize){
 			this.size = new Dimension(newPanelSize.width/map.TileSize, newPanelSize.height/map.TileSize);
 			view = new BufferedImage((this.size.width+2)*map.TileSize, (this.size.height+2)*map.TileSize, BufferedImage.TYPE_INT_RGB);
@@ -56,7 +56,7 @@ public class Window extends JFrame {
 				public void keyPressed(KeyEvent e) {
 					if(!keys.contains(e.getKeyCode())){
 						keys.add(e.getKeyCode());
-						if(!timer.isRunning())timer.start();
+						timer.start();
 					}
 					if(e.getKeyCode()==KeyEvent.VK_ESCAPE)System.exit(0);
 				}
