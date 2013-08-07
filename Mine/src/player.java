@@ -14,7 +14,7 @@ public class player {
 		if(position.x +dx < 0 || position.x +dx > map.size.width){
 			dx = 0;
 		}
-		if(position.y +dy < 0 || position.y +dy > map.size.height){
+		if(position.y +dy < 0 || position.y + dy > map.size.height){
 			dy=0;
 		}
 		
