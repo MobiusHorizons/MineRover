@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 
 public class map {
 	public static int[][] map;
-	public static Dimension size;
+	public static Dimension size = new Dimension();
 	public static int TileSize = 30;
 	static BufferedImage[] tiles = new BufferedImage[7];
 	private Hashtable<Integer, String> tile_files = new Hashtable<>();
@@ -22,7 +22,7 @@ public class map {
 	private int sum, select;
 	private float rand;
 	public map(Dimension size2){
-		size=size2;
+		size.setSize(size2);
 		map = new int[size.width][size.height];
 		for(int[] row:map){
 			for (int i = 0; i < row.length; i++) {
@@ -70,7 +70,7 @@ public class map {
 		}
 	}
 	
-	BufferedImage getTile(int x, int y){
+	static BufferedImage getTile(int x, int y){
 		if(x>=0 && x< size.width && y>=0 && y<size.height){
 			return tiles[map[x][y]];
 		}else return tiles[0];
