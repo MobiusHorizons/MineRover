@@ -6,6 +6,8 @@ public class player {
 	Point position;
 	
 	int hp = 10, fuel = 100, money = 0;
+	int fuel_drill=2;
+	int fuel_move=1;
 	public player(int x, int y){
 		position = new Point(x, y);
 	}
@@ -19,8 +21,14 @@ public class player {
 		}
 		
 		position.translate(dx, dy);
-		map.dig(position);
+		if(map.dig(position)!=0){
+			fuel-= fuel_drill;
+		}else {
+			fuel -= fuel_move;
+		}
+		
 		game.refresh();
+		System.out.println(fuel);
 	}
 
 	public Point getPosition() {
