@@ -28,6 +28,11 @@ public class player {
 			
 			fuel -= fuel_move;
 		}
+		try {
+			Thread.sleep(100*last_tile);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 		game.refresh();
 		System.out.println(fuel);

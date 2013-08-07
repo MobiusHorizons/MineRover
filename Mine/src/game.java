@@ -9,7 +9,7 @@ public class game {
 	private static Point playerPos;
 	private static int posX, posY;
 	public game(){
-		new map(new Dimension(40,40));
+		new map(new Dimension(100,100));
 		refresh();
 		map.dig(player.position);
 		Window.panel.timer.start();
