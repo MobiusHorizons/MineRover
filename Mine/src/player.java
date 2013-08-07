@@ -11,6 +11,13 @@ public class player {
 	}
 	
 	public void move(int dx, int dy){
+		if(position.x +dx < 0 || position.x +dx > map.size.width){
+			dx = 0;
+		}
+		if(position.y +dy < 0 || position.y +dy > map.size.height){
+			dy=0;
+		}
+		
 		position.translate(dx, dy);
 		game.refresh();
 	}
