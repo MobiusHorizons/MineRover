@@ -9,7 +9,6 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
-
 public class map {
 	public static int[][] map;
 	public static Dimension size = new Dimension();
