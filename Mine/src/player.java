@@ -19,6 +19,7 @@ public class player {
 		}
 		
 		position.translate(dx, dy);
+		map.dig(position);
 		game.refresh();
 	}
 

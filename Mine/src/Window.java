@@ -84,23 +84,15 @@ public class Window extends JFrame {
 				switch (k) {
 				case KeyEvent.VK_RIGHT:
 					game.player.move(1, 0);
-//					viewPos.x += (viewPos.x + panelSize.width < map.size.width)? 1:0;
-//					repaint();
 					return;
 				case KeyEvent.VK_LEFT:
 					game.player.move(-1, 0);
-//					viewPos.x -= (viewPos.x > 0)? 1:0;
-//					repaint();
 					return;
 				case KeyEvent.VK_UP:
 					game.player.move(0, -1);
-//					viewPos.y -= (viewPos.y > 0)? 1:0;
-//					repaint();
 					return;
 				case KeyEvent.VK_DOWN:
 					game.player.move(0, 1);
-//					viewPos.y += (viewPos.y + panelSize.height < map.size.height)? 1:0;
-//					repaint();
 					return;
 				}
 			}

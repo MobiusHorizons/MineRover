@@ -15,6 +15,7 @@ public class map {
 	public static Dimension size = new Dimension();
 	public static int TileSize = 30;
 	static BufferedImage[] tiles = new BufferedImage[7];
+	static BufferedImage blank = new BufferedImage(TileSize, TileSize, BufferedImage.TYPE_INT_RGB);
 	private Hashtable<Integer, String> tile_files = new Hashtable<>();
 	private Graphics2D g;
 	private Random generator = new Random();
@@ -58,11 +59,11 @@ public class map {
 		tile_files.put(5,"diamond.png");
 		tile_files.put(6,"emerald.png");
 		
-		tiles[0] = new BufferedImage(TileSize, TileSize, BufferedImage.TYPE_INT_RGB);
-		g=tiles[0].createGraphics();
+		blank = new BufferedImage(TileSize, TileSize, BufferedImage.TYPE_INT_RGB);
+		g=blank.createGraphics();
 		g.setColor(Color.black);
 		g.fillRect(0, 0, TileSize, TileSize);
-		for (int i = 1; i < tiles.length; i++) {
+		for (int i = 0; i < tiles.length; i++) {
 			try {
 				tiles[i] = ImageIO.read(new File("tiles/"+tile_files.get(i)));
 			} catch(IOException e){
@@ -74,7 +75,7 @@ public class map {
 	static BufferedImage getTile(int x, int y){
 		if(isInMap(x,y)){
 			return tiles[map[x][y]];
-		}else return tiles[0];
+		}else return blank;
 	}
 	
 	static int dig(Point pos){
