@@ -19,23 +19,25 @@ public class player {
 		if(position.y +dy < 0 || position.y + dy >= map.size.height){
 			dy=0;
 		}
-		
-		position.translate(dx, dy);
-		int last_tile = map.dig(position);
-		if(last_tile!=0){
-			fuel-= fuel_drill;
-		}else {
+		if((dy==0) && (dx==0)){
 			
-			fuel -= fuel_move;
-		}
-		try {
-			Thread.sleep(100*last_tile);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+			position.translate(dx, dy);
+			int last_tile = map.dig(position);
+			if(last_tile!=0){
+				fuel-= fuel_drill;
+			}else {
+			
+				fuel -= fuel_move;
+			}
+			try {
+				Thread.sleep(100*last_tile);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		
-		game.refresh();
-		System.out.println(fuel);
+			game.refresh();
+			System.out.println(fuel);
+		}
 	}
 
 	public Point getPosition() {
