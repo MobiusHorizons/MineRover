@@ -35,7 +35,7 @@ public class game {
 		if(lastTile!=null){
 			p.move(dx, dy, -1* lastTile.getFuelCost(), lastTile.getValue());
 			try {
-				Thread.sleep(20*lastTile.getValue());
+				Thread.sleep(100*lastTile.getValue());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
