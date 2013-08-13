@@ -29,9 +29,7 @@ public class game {
 	public static void main(String[] args){
 		Dimension size = new Dimension(630, 630);
 		new Window(size);
-
 		new game();
-		
 	}
 	public static void player_move(player p,int dx, int dy ){
 		int fuel_move = -1;

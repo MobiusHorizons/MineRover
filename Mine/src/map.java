@@ -14,9 +14,9 @@ public class map {
 	public static int[][] map;
 	public static Dimension size = new Dimension();
 	public static int TileSize = 30;
-	static BufferedImage[] tiles = new BufferedImage[7];
+	static tile[] tiles = new tile[7];
 	static BufferedImage blank = new BufferedImage(TileSize, TileSize, BufferedImage.TYPE_INT_RGB);
-	private Hashtable<Integer, String> tile_files = new Hashtable<>();
+//	private Hashtable<Integer, String> tile_files = new Hashtable<>();
 	private Graphics2D g;
 	private Random generator = new Random();
 	private int[] probabilities = new int[5];
@@ -51,30 +51,21 @@ public class map {
 			}
 			
 		}
-		tile_files.put(0,"tunnel.png");
-		tile_files.put(1, "dirt.png");
-		tile_files.put(2,"iron.png");
-		tile_files.put(3,"gold.png");
-		tile_files.put(4,"silver.png");
-		tile_files.put(5,"diamond.png");
-		tile_files.put(6,"emerald.png");
 		
 		blank = new BufferedImage(TileSize, TileSize, BufferedImage.TYPE_INT_RGB);
 		g=blank.createGraphics();
 		g.setColor(Color.black);
 		g.fillRect(0, 0, TileSize, TileSize);
 		for (int i = 0; i < tiles.length; i++) {
-			try {
-				tiles[i] = ImageIO.read(new File("tiles/"+tile_files.get(i)));
-			} catch(IOException e){
-				
-			}
+			tiles[i] = new tile(new Dimension(TileSize, TileSize), i);
 		}
 	}
 	
 	static BufferedImage getTile(int x, int y){
 		if(isInMap(x,y)){
-			return tiles[map[x][y]];
+			tile tile = tiles[map[x][y]];
+			System.out.println(tile==null);
+			return tile.getSprite();
 		}else return blank;
 	}
 	
