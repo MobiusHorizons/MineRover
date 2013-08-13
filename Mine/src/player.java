@@ -19,7 +19,7 @@ public class player {
 		if(position.y +dy < 0 || position.y + dy >= map.size.height){
 			dy=0;
 		}
-		if((dy!=0) && (dx!=0)){
+		if((dy!=0) || (dx!=0)){
 			
 			position.translate(dx, dy);
 			int last_tile = map.dig(position);
