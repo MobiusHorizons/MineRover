@@ -12,32 +12,12 @@ public class player {
 		position = new Point(x, y);
 	}
 	
-	public void move(int dx, int dy){
-		if(position.x +dx < 0 || position.x +dx >= map.size.width){
-			dx = 0;
-		}
-		if(position.y +dy < 0 || position.y + dy >= map.size.height){
-			dy=0;
-		}
-		if((dy!=0) || (dx!=0)){
-			
-			position.translate(dx, dy);
-			int last_tile = map.dig(position);
-			if(last_tile!=0){
-				fuel-= fuel_drill;
-			}else {
-			
-				fuel -= fuel_move;
-			}
-			try {
-				Thread.sleep(100*last_tile);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		
-			game.refresh();
-			System.out.println(fuel);
-		}
+	public void move(int dx, int dy, int delta_fuel, int delta_money){
+		fuel += delta_fuel;
+		money += delta_money;
+		position.translate(dx, dy);
+		System.out.println(fuel);
+
 	}
 
 	public Point getPosition() {

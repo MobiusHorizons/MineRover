@@ -34,6 +34,31 @@ public class game {
 		
 	}
 	public static void player_move(player p,int dx, int dy ){
-		
+		int fuel_move = -1;
+		int fuel_dig = -2;
+		if(p.position.x +dx < 0 || p.position.x +dx >= map.size.width){
+			dx = 0;
+		}
+		if(p.position.y +dy < 0 || p.position.y + dy >= map.size.height){
+			dy=0;
+		}
+		if((dy!=0) || (dx!=0)){
+			int delta_fuel = 0;
+			int delta_money = 0;
+			int last_tile = map.dig(new Point(p.position.x+dx, p.position.y+dy));
+			if(last_tile == 0){
+				delta_fuel = fuel_move;
+			} else {
+				delta_money = last_tile;
+				delta_fuel = fuel_dig;
+			}
+			p.move(dx, dy, delta_fuel, delta_money);
+			try {
+				Thread.sleep(100*last_tile);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			game.refresh();
+		}
 	}
 }

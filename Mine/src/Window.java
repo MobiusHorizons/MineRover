@@ -98,16 +98,16 @@ public class Window extends JFrame {
 			for(Integer k:keys){
 				switch (k) {
 				case KeyEvent.VK_RIGHT:
-					game.player.move(1, 0);
+					game.player_move(game.player,1, 0);
 					return;
 				case KeyEvent.VK_LEFT:
-					game.player.move(-1, 0);
+					game.player_move(game.player,-1, 0);
 					return;
 				case KeyEvent.VK_UP:
-					game.player.move(0, -1);
+					game.player_move(game.player,0, -1);
 					return;
 				case KeyEvent.VK_DOWN:
-					game.player.move(0, 1);
+					game.player_move(game.player,0, 1);
 					return;
 				}
 			}
