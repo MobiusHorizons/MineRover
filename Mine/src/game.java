@@ -10,9 +10,8 @@ public class game {
 	private static int posX, posY;
 	public game(){
 		new map(new Dimension(100,100));
-		refresh();
 		map.dig(player.position);
-		Window.panel.timer.start();
+		
 	}
 	
 	
@@ -28,9 +27,11 @@ public class game {
 	
 	public static void main(String[] args){
 		Dimension size = new Dimension(630, 630);
-		new Window(size);
 		new game();
+		new Window(size);
+		Window.panel.timer.start();
 	}
+	
 	public static void player_move(player p,int dx, int dy ){
 		int fuel_move = -1;
 		int fuel_dig = -2;
