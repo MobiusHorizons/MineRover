@@ -33,4 +33,7 @@ public class game {
 		new game();
 		
 	}
+	public static void player_move(player p,int dx, int dy ){
+		
+	}
 }
