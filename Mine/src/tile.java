@@ -17,7 +17,7 @@ public class tile {
 	public tile(Dimension size, int number){
 		value = moneyValues[number];
 		fuelCost = fuelConsumption[number];
-		name = fileNames[number].split(".")[0];
+		name = fileNames[number].split("\\.")[0];
 		sprite = new BufferedImage(size.width, size.height, BufferedImage.TYPE_INT_RGB);
 		try {
 			sprite = ImageIO.read(new File("tiles/"+fileNames[number]));
