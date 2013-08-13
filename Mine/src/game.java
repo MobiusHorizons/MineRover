@@ -49,7 +49,7 @@ public class game {
 			if(last_tile == 0){
 				delta_fuel = fuel_move;
 			} else {
-				delta_money = last_tile;
+				delta_money = last_tile - 1;
 				delta_fuel = fuel_dig;
 			}
 			p.move(dx, dy, delta_fuel, delta_money);

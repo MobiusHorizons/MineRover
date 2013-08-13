@@ -16,7 +16,7 @@ public class player {
 		fuel += delta_fuel;
 		money += delta_money;
 		position.translate(dx, dy);
-		System.out.println(fuel);
+		System.out.println(fuel+":"+money);
 
 	}
 
