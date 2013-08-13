@@ -47,14 +47,15 @@ public class Window extends JFrame {
 	
 	
 	class myPanel extends JPanel implements ActionListener{
-		Point viewPos = new Point(1,1);
-		Point playerPos = new Point(10,10);
+		Point viewPos = new Point();
+		Point playerPos = new Point();
 		BufferedImage view;
 		Graphics2D g2;
 		Dimension size;
 		ArrayList<Integer> keys = new ArrayList<Integer>();
 		Timer timer = new Timer(100, this);
 		public myPanel(Dimension newPanelSize){
+			
 			this.size = new Dimension(newPanelSize.width/map.TileSize, newPanelSize.height/map.TileSize);
 			view = new BufferedImage((this.size.width+2)*map.TileSize, (this.size.height+2)*map.TileSize, BufferedImage.TYPE_INT_RGB);
 			g2 = view.createGraphics();
@@ -74,7 +75,6 @@ public class Window extends JFrame {
 				}
 			});
 			timer.setInitialDelay(0);
-			
 		}
 		
 		public void paintComponent(Graphics g){

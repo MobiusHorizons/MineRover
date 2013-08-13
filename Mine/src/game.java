@@ -28,6 +28,7 @@ public class game {
 		new game();
 		new Window(size);
 		Window.panel.timer.start();
+		game.refresh();
 	}
 	
 	public static void playerMove(player p,int dx, int dy ){
