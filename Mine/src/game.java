@@ -30,7 +30,7 @@ public class game {
 		Window.panel.timer.start();
 	}
 	
-	public static void player_move(player p,int dx, int dy ){
+	public static void playerMove(player p,int dx, int dy ){
 		int fuel_move = -1;
 		int fuel_dig = -2;
 		if(p.position.x +dx < 0 || p.position.x +dx >= map.size.width){
