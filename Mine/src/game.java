@@ -15,8 +15,6 @@ public class game {
 	}
 	
 	
-	
-	
 	public static void refresh(){
 		playerPos = player.getPosition();
 		posX= Math.max(0, Math.min(map.size.width-Window.panel.size.width,playerPos.x-Window.panel.size.width/2));
@@ -44,16 +42,16 @@ public class game {
 		if((dy!=0) || (dx!=0)){
 			int delta_fuel = 0;
 			int delta_money = 0;
-			int last_tile = map.dig(new Point(p.position.x+dx, p.position.y+dy));
-			if(last_tile == 0){
+			tile last_tile = map.dig(new Point(p.position.x+dx, p.position.y+dy));
+			if(last_tile.getName() == "tunnel"){
 				delta_fuel = fuel_move;
 			} else {
-				delta_money = last_tile - 1;
+				delta_money = last_tile.getValue();
 				delta_fuel = fuel_dig;
 			}
 			p.move(dx, dy, delta_fuel, delta_money);
 			try {
-				Thread.sleep(100*last_tile);
+				Thread.sleep(20*last_tile.getValue());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

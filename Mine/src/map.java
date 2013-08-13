@@ -3,12 +3,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.Hashtable;
 import java.util.Random;
-
-import javax.imageio.ImageIO;
 
 public class map {
 	public static int[][] map;
@@ -16,7 +11,6 @@ public class map {
 	public static int TileSize = 30;
 	static tile[] tiles = new tile[7];
 	static BufferedImage blank = new BufferedImage(TileSize, TileSize, BufferedImage.TYPE_INT_RGB);
-//	private Hashtable<Integer, String> tile_files = new Hashtable<>();
 	private Graphics2D g;
 	private Random generator = new Random();
 	private int[] probabilities = new int[5];
@@ -63,19 +57,17 @@ public class map {
 	
 	static BufferedImage getTile(int x, int y){
 		if(isInMap(x,y)){
-			tile tile = tiles[map[x][y]];
-			System.out.println(tile==null);
-			return tile.getSprite();
+			return tiles[map[x][y]].getSprite();
 		}else return blank;
 	}
 	
-	static int dig(Point pos){
+	static tile dig(Point pos){
 		if(isInMap(pos)){
-			int type = map[pos.x][pos.y];
+			tile type = tiles[map[pos.x][pos.y]];
 			map[pos.x][pos.y] = 0;
 			return type;
 		}
-		return -1;
+		return null;
 	}
 	
 	static boolean isInMap(int x, int y){
@@ -84,4 +76,6 @@ public class map {
 	static boolean isInMap(Point pos){
 		return isInMap(pos.x, pos.y);
 	}
+	
+	
 }
