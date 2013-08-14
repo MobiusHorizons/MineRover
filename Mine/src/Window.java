@@ -108,9 +108,12 @@ public class Window extends JFrame {
 				else
 					dview.translate(-movx*increment, -movy*increment);
 				movCount+=increment;
-				if(movCount>=map.TileSize)movCount=-1;
 				repaint();
-				return;
+				if(movCount>=map.TileSize){
+					game.moveDone(game.player);
+					movCount=-1;
+					repaint();
+				}else return;
 			}
 			for(Integer k:keys){
 				switch (k) {
@@ -129,6 +132,10 @@ public class Window extends JFrame {
 				}
 			}
 			timer.stop();
+		}
+		
+		public void setTimer(int delay){
+			timer.setDelay(delay);
 		}
 		
 	}

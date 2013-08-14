@@ -35,7 +35,7 @@ public class game {
 	}
 	
 	public static void playerMove(player p,int dx, int dy ){
-		tile newTile = map.dig(new Point(p.position.x+dx, p.position.y+dy));
+		tile newTile = map.getTile(new Point(p.position.x+dx, p.position.y+dy));
 		if(newTile!=null){
 			lastPos.setLocation(playerPos);
 			lastX = posX;
@@ -45,7 +45,11 @@ public class game {
 			posX= Math.max(0, Math.min(map.size.width-Window.panel.size.width,playerPos.x-Window.panel.size.width/2));
 			posY= Math.max(0, Math.min(map.size.height-Window.panel.size.height,playerPos.y-Window.panel.size.height/2));
 			edge = (lastX==posX)&&(lastY==posY);
+			Window.panel.setTimer(newTile.getTime());
 			Window.panel.move(new Point(lastX,lastY), lastPos, dx, dy, edge);
 		}
+	}
+	public static void moveDone(player p){
+		map.dig(playerPos);
 	}
 }

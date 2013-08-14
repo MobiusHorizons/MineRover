@@ -69,6 +69,13 @@ public class map {
 		}
 		return null;
 	}
+	static tile getTile(Point pos){
+		if(isInMap(pos)){
+			tile type = tiles[map[pos.x][pos.y]];
+			return type;
+		}
+		return null;
+	}
 	
 	static boolean isInMap(int x, int y){
 		return x>=0 && x< size.width && y>=0 && y<size.height;
