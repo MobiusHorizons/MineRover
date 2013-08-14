@@ -29,6 +29,7 @@ public class Window extends JFrame {
 		this.setContentPane(panel);
 		this.setVisible(true);
 		
+		
 		this.addWindowFocusListener(new WindowAdapter() {
 			public void windowGainedFocus(WindowEvent e) {
 				panel.requestFocus();
@@ -39,21 +40,15 @@ public class Window extends JFrame {
 	}
 	
 	
-	
-	public static void refresh(){
-		panel.repaint();
-	}
-	
-	
-	
 	class myPanel extends JPanel implements ActionListener{
-		Point viewPos = new Point();
-		Point playerPos = new Point();
+		Point viewPos = new Point(), playerPos = new Point(), dview = new Point(), dplayer = new Point();
 		BufferedImage view;
 		Graphics2D g2;
 		Dimension size;
 		ArrayList<Integer> keys = new ArrayList<Integer>();
-		Timer timer = new Timer(100, this);
+		Timer timer = new Timer(20, this);
+		int movCount=-1, movx=0, movy = 0, increment = 5;
+		boolean edge= false;
 		public myPanel(Dimension newPanelSize){
 			
 			this.size = new Dimension(newPanelSize.width/map.TileSize, newPanelSize.height/map.TileSize);
@@ -78,14 +73,14 @@ public class Window extends JFrame {
 		}
 		
 		public void paintComponent(Graphics g){
-			for(int i = viewPos.y -1, y=0; i < viewPos.y + size.height; i++, y+=map.TileSize){
-				for(int j = viewPos.x -1, x=0; j < viewPos.x + size.width; j++, x+=map.TileSize){
-					g2.drawImage(map.getTile(j, i), x, y, null);
+			for(int i = viewPos.y -1, y=0; i <= viewPos.y + size.height; i++, y+=map.TileSize){
+				for(int j = viewPos.x -1, x=0; j <= viewPos.x + size.width; j++, x+=map.TileSize){
+					g2.drawImage(map.getTile(j, i), x + dview.x, y+ dview.y, null);
 				}
 			}
 			g.drawImage(view, -map.TileSize, -map.TileSize, null);
 			g.setColor(Color.red);
-			g.fillOval((playerPos.x-viewPos.x)*map.TileSize, (playerPos.y-viewPos.y)*map.TileSize, map.TileSize, map.TileSize);
+			g.fillOval((playerPos.x-viewPos.x)*map.TileSize + dplayer.x, (playerPos.y-viewPos.y)*map.TileSize + dplayer.y, map.TileSize, map.TileSize);
 		}
 		
 		public void refresh(Point pos, Point player){
@@ -94,7 +89,29 @@ public class Window extends JFrame {
 			repaint();
 		}
 		
+		public void move(Point pos, Point player, int dx, int dy, boolean edge){
+			this.edge = edge;
+			viewPos.setLocation(pos);
+			playerPos.setLocation(player);
+			dview.setLocation(0,0);
+			dplayer.setLocation(0,0);
+			movx=dx;
+			movy=dy;
+			movCount=0;
+			repaint();
+		}
+		
 		public void actionPerformed(ActionEvent e){
+			if (movCount>=0){
+				if(edge)
+					dplayer.translate(movx*increment, movy*increment);
+				else
+					dview.translate(-movx*increment, -movy*increment);
+				movCount+=increment;
+				if(movCount>=map.TileSize)movCount=-1;
+				repaint();
+				return;
+			}
 			for(Integer k:keys){
 				switch (k) {
 				case KeyEvent.VK_RIGHT:
