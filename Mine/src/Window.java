@@ -80,7 +80,7 @@ public class Window extends JFrame {
 			}
 			g.drawImage(view, -map.TileSize, -map.TileSize, null);
 			g.setColor(Color.red);
-			g.fillOval((playerPos.x-viewPos.x)*map.TileSize + dplayer.x, (playerPos.y-viewPos.y)*map.TileSize + dplayer.y, map.TileSize, map.TileSize);
+			g.fillOval((playerPos.x-viewPos.x)*map.TileSize + dplayer.x +3, (playerPos.y-viewPos.y)*map.TileSize + dplayer.y +3, map.TileSize -6, map.TileSize -6);
 		}
 		
 		public void refresh(Point pos, Point player){
